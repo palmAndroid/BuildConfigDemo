@@ -1,0 +1,75 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    signingConfigs {
+        debug {
+            storeFile file('C:\\Users\\0027T0744\\DHL\\certificate\\msal.jks')
+            storePassword 'ibm@123'
+            keyPassword 'ibm@123'
+            keyAlias 'msal'
+        }
+        prod {
+            storeFile file('C:\\Users\\0027T0744\\DHL\\certificate\\msal.jks')
+            storePassword 'ibm@123'
+            keyAlias 'msal'
+            keyPassword 'ibm@123'
+        }
+    }
+    compileSdk 31
+
+    defaultConfig {
+        applicationId "com.buildconfigdemo"
+        minSdk 21
+        targetSdk 31
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+//        dev {
+//            minifyEnabled false
+//            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+//        }
+//        uat {
+//        }
+//        prod {
+//        }
+
+        dev {
+            signingConfig signingConfigs.debug
+            buildConfigField "String", "SERVER_URL", '"https://sscim-apim-eas-dev.azure-api.net/sscim-bbx-print-api-eas-dev/"'
+            buildConfigField "String", "SUBSCRIPTION_KEY", '"d5c19e6dc51a44669565d47edce907ee"'
+            buildConfigField "int", "KEY_AUTH",'R.raw.auth_config_single_account_uat'
+        }
+        uat {
+            signingConfig signingConfigs.debug
+            buildConfigField "String", "SERVER_URL", '"https://api.sscim.uat.dhl.com/sscim-bbx-print-api-uat/"'
+            buildConfigField "String", "SUBSCRIPTION_KEY", '"4dfa42d56da8408599f891c0783b1b44"'
+            buildConfigField "int", "KEY_AUTH",'R.raw.auth_config_single_account_uat'
+        }
+        prod{
+            signingConfig signingConfigs.debug
+            buildConfigField "String", "SERVER_URL", '"https://api.sscim.dhl.com/sscim-bbx-print-api-prod/"'
+            buildConfigField "String", "SUBSCRIPTION_KEY", '"7b6160b75b4c480c9e3febf734446536"'
+            buildConfigField "int", "KEY_AUTH",'R.raw.auth_config_single_account'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.appcompat:appcompat:1.4.1'
+    implementation 'com.google.android.material:material:1.5.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+}

@@ -1,0 +1,19 @@
+{
+  "client_id" : "fba58a61-6fd1-4116-a681-84948836413a",
+  "authorization_user_agent" : "DEFAULT",
+  "redirect_uri" : "msauth://com.dhl.sscim/hUh94Su6bR7ANnpLb7tCxJHxZPw%3D",
+  "account_mode" : "SINGLE",
+  "broker_redirect_uri_registered": true,
+  "authorities" : [
+    {
+      "type": "AAD",
+      "audience": {
+        "type": "AzureADMyOrg",
+        "tenant_id": "cd99fef8-1cd3-4a2a-9bdf-15531181d65e"
+      }
+    }
+  ]
+}
+
+
+
